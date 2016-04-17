@@ -1,17 +1,30 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../elliptical-polymer-behaviors/component-behavior.html">
 <link rel="import" href="../ui-behaviors/collapse.html">
 
-
 <script>
-Elliptical(function(){
-    $.element('ui-collapse',[Elliptical.Behaviors.Collapse],{
-        options: {
-            proxyUpgrade:true,
-            animate: true,
-            duration: 300,
-            easing: 'linear'
+
+    Polymer({
+
+        is: 'ui-collapse',
+
+        behaviors:[Elliptical.ComponentBehavior,Elliptical.Behaviors.Collapse],
+
+        properties: {
+            animate: {
+                type:Boolean,
+                value:true
+            },
+            duration: {
+                value:300
+            },
+            easing: {
+                type:String,
+                value:'linear'
+            }
         },
 
-        _initElement: function(){
+        ready:function(){
             this._data.set('collapsible',null);
             this._setCollapseItems();
             this._collapseEvents();
@@ -19,5 +32,5 @@ Elliptical(function(){
         }
 
     });
-});
+
 </script>
